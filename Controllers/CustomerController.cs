@@ -71,9 +71,9 @@ namespace ProjectS.Controllers
         }
         [HttpDelete]
         [Route("{id}")]
-        public IActionResult DeleteCustomer(int id)
+        public async Task<IActionResult> DeleteCustomer(int id)
         {
-            var customer = dbContext.Customers.Find(id);
+            var customer = await dbContext.Customers.FindAsync(id);
             if (customer is null)
             {
                 return NotFound("Invalid Customer");
